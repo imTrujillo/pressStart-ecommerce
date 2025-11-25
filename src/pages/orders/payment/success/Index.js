@@ -19,7 +19,7 @@ export const Index = () => {
   const downloadInvoice = async (fileName) => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}invoice?orderId=${orderDetails?.orderId}`,
+        `${process.env.REACT_APP_API_URL}invoice?orderId=${orderDetails?.orderId}`,
         { responseType: "blob" }
       );
 
