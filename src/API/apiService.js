@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useAuth } from "../pages/session/AuthProvider";
 
-const baseUrl = "https://localhost:7084/api/";
+const baseUrl = import.meta.env.VITE_API_URL;
 
 export function useApi() {
   const { token } = useAuth();

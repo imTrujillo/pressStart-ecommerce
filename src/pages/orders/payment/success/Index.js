@@ -19,7 +19,7 @@ export const Index = () => {
   const downloadInvoice = async (fileName) => {
     try {
       const response = await axios.get(
-        `https://localhost:7084/api/invoice?orderId=${orderDetails?.orderId}`,
+        `${import.meta.env.VITE_API_URL}invoice?orderId=${orderDetails?.orderId}`,
         { responseType: "blob" }
       );
 
