@@ -8,6 +8,7 @@ using Shop.Domain.Enums;
 using Shop.Domain.Exceptions;
 using Stripe;
 using Stripe.Checkout;
+using static System.Net.WebRequestMethods;
 using StripeEntity = Shop.Domain.Entities.StripeEntity;
 
 namespace Shop.Application.Services;
@@ -61,8 +62,8 @@ public class PaymentService : IPaymentService
             {
                 { "orderId", orderId.ToString() }
             },
-            SuccessUrl = "http://localhost:3000/success",
-            CancelUrl = "http://localhost:3000/cancel",
+            SuccessUrl = "https://pressstart-api.onrender.com/success",
+            CancelUrl = "https://pressstart-api.onrender.com/",
             LineItems = order.Details.Select(d => new SessionLineItemOptions()
             {
                 Quantity = d.Quantity,
