@@ -1,0 +1,274 @@
+.loginContainer {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding: 40px 0;
+  box-sizing: border-box;
+  background: radial-gradient(
+    circle at center,
+    rgba(30, 30, 50, 0.8),
+    rgba(20, 20, 40, 0.9)
+  );
+  overflow: hidden;
+  position: relative; /* Necesario para que el pseudo-elemento ::before funcione */
+}
+
+/* Animación de fondo */
+.loginContainer::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, #10101f, #20203f, #10101f);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.loginCardExpand {
+  width: 700px !important;
+}
+
+.loginCard {
+  background: #252540;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 5px rgba(30, 30, 50, 0.3);
+  text-align: center;
+  width: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 968px) {
+  .loginCard {
+    width: 70%;
+  }
+
+  .loginCardExpand {
+    width: 70% !important;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .loginCard {
+    width: 90%;
+  }
+
+  .loginCardExpand {
+    width: 90% !important;
+  }
+}
+
+.loginHeader {
+  margin-bottom: 30px;
+}
+
+.loginIcon {
+  font-size: 60px;
+  color: #00bcd4;
+  margin-bottom: 20px;
+  text-shadow: 0 0 15px rgba(0, 188, 212, 0.6);
+}
+
+.loginHeader h2 {
+  font-size: 2.2em;
+  margin-bottom: 10px;
+  color: #f0f0f0;
+  font-weight: 600;
+}
+
+.loginHeader p {
+  font-size: 1em;
+  color: #b0b0b0;
+}
+
+.inputGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputGroup .icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 1.1em;
+  z-index: 1;
+}
+
+.inputGroup input[type="text"],
+.inputGroup input[type="email"],
+.inputGroup input[type="password"],
+.inputGroup input[type="date"],
+.inputGroup select,
+.inputGroup option {
+  width: 100%;
+  padding: 15px 15px 15px 50px;
+  border: none;
+  border-radius: 8px;
+  background-color: #333355;
+  color: #e0e0e0;
+  font-size: 1em;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.inputGroup select {
+  padding: 15px !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.inputGroup input[type="text"]::placeholder,
+.inputGroup input[type="email"]::placeholder,
+.inputGroup input[type="password"]::placeholder,
+.inputGroup input[type="date"]::placeholder {
+  color: #999;
+}
+
+.inputGroup input[type="text"]:focus,
+.inputGroup input[type="email"]:focus,
+.inputGroup input[type="password"]:focus,
+.inputGroup input[type="date"]:focus,
+.inputGroup option {
+  outline: none;
+  background-color: #3a3a60;
+  color: #e0e0e0;
+  box-shadow: 0 0 0 3px #00bcd4, inset 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.optionsGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 0.95em;
+}
+
+.rememberMe {
+  display: flex;
+  align-items: center;
+  color: #c0c0c0;
+}
+
+.rememberMe input[type="checkbox"] {
+  margin-right: 8px;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #00bcd4;
+  border-radius: 4px;
+  background-color: #333;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.rememberMe input[type="checkbox"]:checked {
+  background-color: #00bcd4;
+  border-color: #00bcd4;
+}
+
+.rememberMe input[type="checkbox"]:checked::after {
+  content: "\2713";
+  font-size: 14px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.forgotPassword {
+  color: #00bcd4;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgotPassword:hover {
+  color: #00e0ff;
+  text-decoration: underline;
+}
+
+.loginButton {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(45deg, #00bcd4, #009688);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.15em;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.loginButton:hover {
+  background: linear-gradient(45deg, #00e0ff, #00bfa5);
+  box-shadow: 0 8px 20px rgba(0, 188, 212, 0.6);
+  transform: translateY(-2px);
+}
+
+.signupLink {
+  margin-top: 30px;
+  font-size: 0.95em;
+  color: #c0c0c0;
+}
+
+.signupLink a {
+  color: #00bcd4;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.signupLink a:hover {
+  color: #00e0ff;
+  text-decoration: underline;
+}
+
+.guestContainer {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #1a1a2e;
+  color: #e0e0e0;
+  overflow-y: auto;
+}
+
+/* Estilos para el autocompletado en navegadores */
+.guestContainer input:-webkit-autofill,
+.guestContainer input:-webkit-autofill:hover,
+.guestContainer input:-webkit-autofill:focus,
+.guestContainer input:-webkitautofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px #333355 inset !important;
+  -webkit-text-fill-color: #e0e0e0 !important;
+  caret-color: #e0e0e0 !important;
+}
+.guestContainer input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
