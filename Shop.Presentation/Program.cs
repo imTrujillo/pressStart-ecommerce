@@ -103,11 +103,8 @@ builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
 
 // Bind al puerto de Render
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
