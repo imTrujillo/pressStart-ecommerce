@@ -35,7 +35,7 @@ export const OrderModal = ({
   useEffect(() => {
     if (order?.details) {
       setOrderProducts(
-        order.details.map((p) => {
+        order.details?.map((p) => {
           const product = products.find(
             (prod) => prod.productName === p.productName
           );
@@ -118,7 +118,7 @@ export const OrderModal = ({
         userId: data.userId ?? 0,
         orderStatus: Number(data.orderStatus),
         address: data.address ?? "",
-        details: orderProducts.map(({ stock, productName, ...rest }) => rest),
+        details: orderProducts?.map(({ stock, productName, ...rest }) => rest),
       };
       console.log(orderData);
       let orderResponse;

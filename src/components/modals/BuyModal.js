@@ -28,7 +28,7 @@ export const BuyModal = ({
   const { apiServicePost } = useApi();
   const onSubmit = methods.handleSubmit(async (data) => {
     //Guardar los detalles del pedido
-    const details = productsCart.map((product) => ({
+    const details = productsCart?.map((product) => ({
       quantity: product.quantity ?? 1,
       price: product.price,
       productId: product.id,

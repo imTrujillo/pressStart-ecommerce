@@ -71,7 +71,7 @@ export const ShopCategories = ({ category, setProductsCart, productsCart }) => {
         modules={[Pagination, Navigation]}
         className="mySwiper w-100"
       >
-        {products.slice(0, 10).map((product) => (
+        {products?.slice(0, 10)?.map((product) => (
           <SwiperSlide key={product.id}>
             <ShopProducts product={product} />
           </SwiperSlide>

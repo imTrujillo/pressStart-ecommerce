@@ -12,7 +12,7 @@ export const ShopCart = ({ productBuy, setProductsCart }) => {
   const updateQuantity = (id, value) => {
     if (value >= 1) {
       setProductsCart((prev) =>
-        prev.map((p) => {
+        prev?.map((p) => {
           if (p.id === id) {
             const newQuantity = Math.min(Math.max(value, 1), p.stock);
             return { ...p, quantity: newQuantity };

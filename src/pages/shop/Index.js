@@ -37,7 +37,7 @@ export const Index = () => {
           {categorias.length <= 0 ? (
             <EmptyState text="No hay categorías disponibles." />
           ) : (
-            categorias.map((category) => (
+            categorias?.map((category) => (
               <ShopCategories
                 key={category.id}
                 category={category}

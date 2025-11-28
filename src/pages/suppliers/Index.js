@@ -120,7 +120,7 @@ export const Index = () => {
                         </td>
                       </tr>
                     ) : (
-                      visibleData.map((supplier, index) => (
+                      visibleData?.map((supplier, index) => (
                         <Show
                           key={supplier.id}
                           index={index + 1}

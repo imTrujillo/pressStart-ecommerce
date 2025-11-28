@@ -46,7 +46,7 @@ export const ProductsOrderModal = ({
                   </tr>
                 </thead>
                 <tbody>
-                  {visibleData.map((detail) => {
+                  {visibleData?.map((detail) => {
                     return (
                       <tr key={detail.id}>
                         <td>

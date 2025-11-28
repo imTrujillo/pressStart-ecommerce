@@ -102,7 +102,7 @@ export const Index = () => {
                     modules={[Pagination, Navigation, Zoom]}
                     className="mySwiper w-100"
                   >
-                    {product.images.map((img) => (
+                    {product?.images?.map((img) => (
                       <SwiperSlide key={img.imageId}>
                         <div className="slide-frame swiper-zoom-container cursor-pointer">
                           <img src={img.imageUrl} alt={img.fileName} />

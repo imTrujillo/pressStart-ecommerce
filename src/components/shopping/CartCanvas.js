@@ -3,7 +3,6 @@ import { BuyModal } from "../modals/BuyModal";
 import { ShopCart } from "./ShopCart";
 import { useAuth } from "../../pages/session/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 export const CartCanvas = ({ productsCart, setProductsCart, fetchData }) => {
   //MODAL PARA EL PROCESO DE COMPRA
@@ -44,7 +43,7 @@ export const CartCanvas = ({ productsCart, setProductsCart, fetchData }) => {
             <div className="col-12 text-center mt-3">¡Carrito Vacío!</div>
           ) : (
             <>
-              {productsCart.map((productBuy, id) => (
+              {productsCart?.map((productBuy, id) => (
                 <ShopCart
                   productBuy={productBuy}
                   key={id}

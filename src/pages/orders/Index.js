@@ -137,7 +137,7 @@ export const Index = () => {
                         </td>
                       </tr>
                     ) : (
-                      visibleData.map((order, index) => (
+                      visibleData?.map((order, index) => (
                         <Show
                           key={order.orderId}
                           index={index + 1}

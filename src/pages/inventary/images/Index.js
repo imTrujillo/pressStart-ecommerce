@@ -115,7 +115,7 @@ export const Index = () => {
                 <>
                   <div className="container-xl align-items-center">
                     <div className="row row-cards">
-                      {visibleData.map((img) => (
+                      {visibleData?.map((img) => (
                         <Show
                           key={img.imageId}
                           img={img}
