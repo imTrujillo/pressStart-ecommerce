@@ -56,9 +56,9 @@ var connectionString = Environment.GetEnvironmentVariable("DEFAULT_CONNECTION")
 
 //Jwt Options
 
-builder.Configuration["Jwt:Secret"] = Environment.GetEnvironmentVariable("JWT_SECRET") ?? "";
-builder.Configuration["Jwt:Issuer"] = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? "";
-builder.Configuration["Jwt:Audience"] = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? "";
+//builder.Configuration["Jwt:Secret"] = Environment.GetEnvironmentVariable("JWT_SECRET") ?? "";
+//builder.Configuration["Jwt:Issuer"] = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? "";
+//builder.Configuration["Jwt:Audience"] = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? "";
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -82,9 +82,9 @@ QuestPDF.Settings.License = LicenseType.Community;
 builder.Services.AddApplication();
 
 //Configure Stripe
-builder.Configuration["Stripe:SecretKey"] = Environment.GetEnvironmentVariable("STRIPE_SECRET_KEY") ?? "";
-builder.Configuration["Stripe:PublishableKey"] = Environment.GetEnvironmentVariable("STRIPE_PUBLISHABLE_KEY") ?? "";
-builder.Configuration["Stripe:WebhookSecret"] = Environment.GetEnvironmentVariable("STRIPE_WEBHOOK_SECRET") ?? "";
+//builder.Configuration["Stripe:SecretKey"] = Environment.GetEnvironmentVariable("STRIPE_SECRET_KEY") ?? "";
+//builder.Configuration["Stripe:PublishableKey"] = Environment.GetEnvironmentVariable("STRIPE_PUBLISHABLE_KEY") ?? "";
+//builder.Configuration["Stripe:WebhookSecret"] = Environment.GetEnvironmentVariable("STRIPE_WEBHOOK_SECRET") ?? "";
 
 builder.Services.Configure<StripeEntity>(builder.Configuration.GetSection("Stripe"));
 
