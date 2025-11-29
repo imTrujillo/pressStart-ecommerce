@@ -79,6 +79,7 @@ builder.Services.Configure<StripeEntity>(options =>
 {
     options.SecretKey = Environment.GetEnvironmentVariable("STRIPE_SECRET_KEY");
     options.PublishableKey = Environment.GetEnvironmentVariable("STRIPE_PUBLISHABLE_KEY");
+    options.WebhookSecret = Environment.GetEnvironmentVariable("STRIPE_WEBHOOK_SECRET");
 });
 
 
