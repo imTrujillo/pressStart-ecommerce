@@ -104,8 +104,8 @@ public class PaymentService : IPaymentService
     {
         var request = _contextAccessor.HttpContext.Request;
         var json = await new StreamReader(request.Body).ReadToEndAsync();
-        
-        var webhookSecret = _configuration["Stripe:WebhookSecret"];
+
+        var webhookSecret =  Environment.GetEnvironmentVariable("STRIPE_WEBHOOK_SECRET");
 
         var stripeEvent = EventUtility.ConstructEvent
             (json, request.Headers["Stripe-Signature"], webhookSecret);
