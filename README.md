@@ -1,70 +1,183 @@
-# Getting Started with Create React App
+# 📦 E-Commerce PressStart Full-Stack
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🚀 Descripción del Proyecto
+Este proyecto es un sistema **E-Commerce completo**, compuesto por:
 
-## Available Scripts
+- **Backend en .NET 8 (Clean Architecture + DDD)**
+- **Frontend en React**
+- **Base de datos PostgreSQL**
+- **Stripe** como sistema de pagos
+- **JWT Auth** para autenticación segura
 
-In the project directory, you can run:
+El sistema permite la gestión de productos, usuarios, pedidos, proveedores, categorías, e incorpora un flujo de compra real con checkout y webhook de Stripe.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Tecnologías Utilizadas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Backend (.NET 8)
+- ASP.NET Core Web API  
+- Entity Framework Core  
+- Clean Architecture  
+- Repository Pattern  
+- PostgreSQL  
+- JWT (Access + Refresh Tokens)  
+- Stripe Checkout  
 
-### `npm test`
+### Frontend
+- React  
+- React Router  
+- Axios
+- Bootstrap
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🧾 Proceso de Facturación en el Ecommerce
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+El proceso de facturación cubre todo el flujo: **usuario → pedido → pago → factura**.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1. Carrito y Pedido
 
-### `npm run eject`
+1. El cliente navega por el catálogo (`/api/Product`) y agrega productos al carrito.
+2. Cuando decide comprar, el frontend envía una solicitud:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  ```
+  POST /api/Orders
+  ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. 3. Se genera un `orderId`.
+6. El usuario agrega productos al pedido:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    ```
+   POST /api/Orders/{orderId}/product/{productId}
+   ```
+    
+8. También puede:
+- Actualizar cantidades  
+- Quitar productos  
+- Consultar su pedido  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+### 2. Proceso de Pago
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Una vez confirmado el pedido:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- El cliente envía:
 
-### Code Splitting
+  ```
+  POST /api/Payment/Checkout
+  ```
+  
+- El backend:
+- Calcula el monto total.
+- Inicia la transacción.
+- Espera el webhook de confirmación:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  ```
+  POST /api/Payment/Webhook
+  ```
 
-### Analyzing the Bundle Size
+- Si el pago es exitoso:
+- El pedido pasa a estado **Pagado**
+- Se genera la **Factura (Invoice)**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+### 3. Generación de Factura
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Después del pago, se registra una factura accesible desde: 
 
-### Advanced Configuration
+  ```
+  GET /api/Invoice
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+La factura incluye:
 
-### Deployment
+- Información del usuario
+- Productos comprados
+- Subtotal
+- Total final
+- Fecha de compra
+- ID de transacción
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 👥 Roles de Usuario
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+El sistema cuenta con cuatro roles: **Invitado**, **Cliente**, **Empleado** y **Administrador**.
+
+---
+
+### 🟦 1. Invitado (Guest)
+
+Usuario **no autenticado**.
+
+#### ✔ Permisos:
+
+- Ver productos
+- Ver categorías
+
+### 🔒 Para realizar un pedido:
+Debe iniciar sesión o registrarse.
+
+---
+
+### 🟩 2. Cliente (Customer)
+
+Usuario autenticado que compra productos.
+
+#### ✔ Permisos:
+
+- Crear pedidos
+- Agregar o quitar productos del pedido  
+- Ver sus pedidos
+- Procesar pagos
+- Ver sus facturas  
+- Restablecer contraseña
+
+### 🟧 3. Empleado (Employee)
+
+Usuario del negocio encargado de manejar operaciones internas.
+
+#### ✔ Permisos:
+
+##### 📦 Inventario
+- Crear, actualizar y eliminar productos
+- Manejo de imágenes de productos  
+- Crear y administrar categorías  
+- Gestionar proveedores  
+
+##### 🛒 Pedidos
+- Ver sus pedidos  
+- Actualizar estado de un pedido
+- - Revisar productos asociados a un pedido
+ 
+### 🟥 4. Administrador (Admin)
+
+Usuario con acceso total al sistema.
+
+#### ✔ Permisos:
+
+- Todo lo que puede hacer un Empleado
+- Crear y eliminar empleados
+- Administrar roles
+- Ver todas las facturas
+- Generar reportes financieros
+- Eliminar pedidos
+- Control total del inventario
+- Mantenimiento de la base de datos
+
+#### ❌ No tiene restricciones del sistema
+
+---
+
+## 🌐 Despliegue
+
+- Backend → Render → https://pressstart-api.onrender.com/swagger/index.html
+- Frontend → Vercel → https://pressstart-sv.vercel.app/
+- Base de datos → Neon / Railway
+- Pasarela de pago → Stripe
+
