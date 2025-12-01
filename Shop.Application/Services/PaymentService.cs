@@ -62,8 +62,8 @@ public class PaymentService : IPaymentService
             {
                 { "orderId", orderId.ToString() }
             },
-            SuccessUrl = "https://pressstart-api.onrender.com/success",
-            CancelUrl = "https://pressstart-api.onrender.com/cancel",
+            SuccessUrl = "https://pressstart-sv.vercel.app/success",
+            CancelUrl = "https://pressstart-sv.vercel.app/cancel",
             LineItems = order.Details.Select(d => new SessionLineItemOptions()
             {
                 Quantity = d.Quantity,
