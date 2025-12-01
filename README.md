@@ -1,6 +1,11 @@
 # 📦 E-Commerce PressStart Full-Stack
 
+<img src="https://pressstart-sv.vercel.app/logo.png" width="200" alt="Logo del proyecto">
+
 ## 🚀 Descripción del Proyecto
+
+![App](https://pressstart-sv.vercel.app/screenshots/1.png)
+
 Este proyecto es un sistema **E-Commerce completo**, compuesto por:
 
 - **Backend en .NET 8 (Clean Architecture + DDD)**
@@ -16,6 +21,9 @@ El sistema permite la gestión de productos, usuarios, pedidos, proveedores, cat
 ## 🛠️ Tecnologías Utilizadas
 
 ### Backend (.NET 8)
+
+![backend](https://pressstart-sv.vercel.app/screenshots/2.png)
+
 - ASP.NET Core Web API  
 - Entity Framework Core  
 - Clean Architecture  
@@ -25,6 +33,9 @@ El sistema permite la gestión de productos, usuarios, pedidos, proveedores, cat
 - Stripe Checkout  
 
 ### Frontend
+
+![frontend](https://pressstart-sv.vercel.app/screenshots/3.png)
+
 - React  
 - React Router  
 - Axios
@@ -33,6 +44,8 @@ El sistema permite la gestión de productos, usuarios, pedidos, proveedores, cat
 ---
 
 ## 🧾 Proceso de Facturación en el Ecommerce
+
+![facturacion](https://pressstart-sv.vercel.app/screenshots/4.png)
 
 El proceso de facturación cubre todo el flujo: **usuario → pedido → pago → factura**.
 
@@ -107,6 +120,8 @@ La factura incluye:
 
 ## 👥 Roles de Usuario
 
+![Autenticación](https://pressstart-sv.vercel.app/screenshots/1.png)
+
 El sistema cuenta con cuatro roles: **Invitado**, **Cliente**, **Empleado** y **Administrador**.
 
 ---
@@ -178,6 +193,7 @@ Usuario con acceso total al sistema.
 
 - Backend → Render → https://pressstart-api.onrender.com/swagger/index.html
 - Frontend → Vercel → https://pressstart-sv.vercel.app/
-- Base de datos → Neon / Railway
+- Base de datos → Railway
 - Pasarela de pago → Stripe
+- Diccionario de datos → https://1drv.ms/x/c/5963e1d891182ff6/Eb5HJS33wbhOt22GR2P_Ae0BO6uVP7CTfzbvfY0ZWk3fbQ?e=V4MQ1j
 
