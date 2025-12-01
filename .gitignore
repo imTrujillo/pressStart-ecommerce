@@ -1,0 +1,22 @@
+# Visual Studio
+.vs/
+.idea/
+*.user
+*.suo
+
+# Build
+bin/
+obj/
+out/
+
+# VSIndex lock files
+*.vsidx
+
+# Rider / IntelliJ
+.idea/
+
+# Logs
+*.log
+
+# Dotnet tools
+*.pdb
