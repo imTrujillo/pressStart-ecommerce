@@ -60,14 +60,14 @@ El proceso de facturación cubre todo el flujo: **usuario → pedido → pago �
   POST /api/Orders
   ```
 
-5. 3. Se genera un `orderId`.
-6. El usuario agrega productos al pedido:
+3. Se genera un `orderId`.
+4. El usuario agrega productos al pedido:
 
-    ```
-   POST /api/Orders/{orderId}/product/{productId}
-   ```
+  ```
+  POST /api/Orders/{orderId}/product/{productId}
+  ```
     
-8. También puede:
+5. También puede:
 - Actualizar cantidades  
 - Quitar productos  
 - Consultar su pedido  
@@ -168,7 +168,7 @@ Usuario del negocio encargado de manejar operaciones internas.
 ##### 🛒 Pedidos
 - Ver sus pedidos  
 - Actualizar estado de un pedido
-- - Revisar productos asociados a un pedido
+- Revisar productos asociados a un pedido
  
 ### 🟥 4. Administrador (Admin)
 
@@ -197,3 +197,12 @@ Usuario con acceso total al sistema.
 - Pasarela de pago → Stripe
 - Diccionario de datos → https://1drv.ms/x/c/5963e1d891182ff6/Eb5HJS33wbhOt22GR2P_Ae0BO6uVP7CTfzbvfY0ZWk3fbQ?e=V4MQ1j
 
+---
+
+## 👥 Creadores
+
+1. Wilmer Álvarez → https://github.com/AssistedVeil86
+2. César Andrade → https://github.com/c3saR-A
+3. Jennyfer Cashpal → https://github.com/CharCash
+4. Josué Melara → https://github.com/JosuMelara21
+5. Steven Trujillo → https://github.com/imTrujillo
